@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            MemoryFlash
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <nav style="text-align: center;">
+        <a href="/">Home</a>
+        <p style="display: inline;"> | </p>
+        <!--<a href="/all-decks">All Decks</a> -->
+        <p style="display: inline;"> | </p>
+    </nav>
+
+
+
+    {% block content %}
+    <p> Hello World </p>
+    {% endblock %}
+</body>
+
+</html>
