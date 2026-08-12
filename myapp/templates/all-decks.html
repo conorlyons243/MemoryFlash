@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    MemoryFlash
+{% endblock %}
+
+{% block content %}
+    <h1> All Decks </h1>
+
+    <ul style="font-size: 20px;">
+        {% for d in decks %}
+        <li style="padding-bottom: 10px;">
+            <strong> 
+                <a href="decks/{{ d.id }}">{{ d.title }}</a> 
+            </strong>
+            - created by {{ d.owner }}
+        </li>
+        {% endfor %}
+    </ul>
+     
+{% endblock %}

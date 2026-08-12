@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ deck.title }}
+{% endblock %}
+
+{% block content %}
+    <br>
+    <a href="{% url 'all-decks' %}"> &lt Back </a>
+    <div style="border:1px solid black; border-radius:15px; padding:10px; margin:10px;">
+        <h1 style="margin-bottom: 0px;"> {{ deck.title }} </h1>
+        <h3 style="font-weight: normal; margin-top: 0px;"> <em> created by {{ deck.owner }} </em> </h3>
+
+        <p> {{ deck.description }} </p>
+        <br>
+        <p> Created: {{ deck.created_at.date }} </p>
+        <p> Last Updated: {{ deck.updated_at.date }} </p>
+        <br>
+    </div>
+
+    <ul class="cards" style="list-style-type: none;">
+        {% for c in deck.card_set.all %} <!-- Get all cards of this deck -->
+        <li class="card" style="border: 1px solid black; border-radius: 15px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <p> {{ c.front }} </p>
+            <p> {{ c.back }} </p>
+        </li>
+        <br>
+        <br>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
