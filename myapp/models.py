@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Deck(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True) # Check this works, docs say only changes on Model.save()
 
@@ -22,3 +22,5 @@ class Card(models.Model):
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return self.front + " | " + self.back
