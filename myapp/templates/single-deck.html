@@ -15,6 +15,7 @@
         <p> Created: {{ deck.created_at.date }} </p>
         <p> Last Updated: {{ deck.updated_at.date }} </p>
         <br>
+        <a href="{% url 'edit-deck' deck.id %}"> Edit Deck </a>
     </div>
 
     <ul class="cards" style="list-style-type: none;">

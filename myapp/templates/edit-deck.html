@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}
+    Edit {{ deck.title }} 
+{% endblock %}
+
+{% block content %}
+<h1> Edit Deck: {{ deck.title }} </h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            Deck Title 
+            <br> 
+            <input name="title" value="{{ deck.title }}">
+        </label>
+        <br>
+        <br>
+        <label>
+            Deck Description 
+            <br> 
+            <textarea name="description" value="{{ deck.description }}" rows="5" cols="35"> </textarea>
+        </label>
+        <br>
+        <br>
+
+        {{ formset.management_form }}
+        {{ formset.non_form_errors }}
+
+        <div id="forms-container">
+            {% for form in formset %}
+                <div 
+                class="card-form" 
+                style="border: 1px solid black; border-radius: 15px; padding: 5px; margin: 5px; "
+                > 
+                    {{ form.as_p }}
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+
+        {# blank prototype with __prefix__ placeholders, not submitted #}
+        <template id="empty-form-template">
+            <div class="task-form">{{ formset.empty_form.as_p }}</div>
+        </template>
+
+        <button type="button" id="add-card">Add card</button>
+
+        <button type="submit">Save</button>
+    <br>
+    <a href="{% url 'all-decks' %}">Cancel</a>
+    </form>
+
+{% endblock %}
+
